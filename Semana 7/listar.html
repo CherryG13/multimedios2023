@@ -22,19 +22,75 @@
         <table class="table table-striped table-hover table-borderless table-primary align-middle">
           <thead class="table-light">
             <caption>
-              Table Name
+              Cursos
             </caption>
             <tr>
               <th>ID</th>
               <th>Nombre</th>
               <th>Descripcion</th>
               <th>Tiempo</th>
+              <th>Usuario</th>
+              <th>Acciones</th>
             </tr>
           </thead>
-          <tbody id="resultados" class="table-group-divider"></tbody>
+          <tbody id="resultados" class="table-group-divider">
+
+          </tbody>
           <tfoot></tfoot>
         </table>
       </div>
+      <!-- Modal trigger button
+      <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalId">
+        Launch
+      </button> -->
+      
+      <!-- Modal Body -->
+      <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+      <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitleId">Modal editar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="formulario">
+                <div class="mb-3">
+                  <label for="" class="form-label">Nombre</label>
+                  <input type="text"
+                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="Ingresa el nombre del curso">
+                  <small id="helpId" class="form-text text-muted">Nombre aca</small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Descripcion</label>
+                    <input type="text"
+                      class="form-control" name="" id="" aria-describedby="helpId" placeholder="Ingresa la descripcion del curso">
+                    <small id="helpId" class="form-text text-muted">Descripcion aca</small>
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Tiempo</label>
+                    <input type="text"
+                      class="form-control" name="" id="" aria-describedby="helpId" placeholder="Ingresa el tiempo del curso">
+                    <small id="helpId" class="form-text text-muted">Tiempo aca</small>
+                </div>
+                <div class="mb-3">
+                    <button type="reset" class="btn btn-danger">Limpiar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+     
     </main>
     <footer>
       <!-- place footer here -->
@@ -53,7 +109,7 @@
   <script>
     //declaracion de variabe
     var contenidoTablaResultado = document.querySelector("#resultados");
-
+    
     function cargarDatos() {
       fetch("https://paginas-web-cr.com/ApiPHP/apis/ListaCurso.php")
         .then((respuesta) => respuesta.json()) //recibe los datos em formato json
@@ -75,10 +131,22 @@
             <td>${valor.nombre}</td>
             <td>${valor.descripcion}</td>
             <td>${valor.tiempo}</td>
+            <td>${valor.usuario}</td>
+            <td> <button type="delete" class="btn btn-danger" onclick="eliminar()">Borrar</button> ||
+              <button type="modify" class="btn btn-primary" id="mostrarModal" onclick="editar()">Editar</button>
+            </td>
           </tr>`;
       }
     }
 
+    function editar(id, nombre, descripcion, tiempo){
+      const myModal = new bootstrap.Modal(document.getElementById('modalId'));
+      myModal.show();
+      document.getElementById('nombre').value = nombre;
+    }
+    function eliminar(){
+      alert('eliminar');
+    }
     cargarDatos();
   </script>
 </body>
