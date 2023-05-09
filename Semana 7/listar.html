@@ -58,21 +58,21 @@
                 <div class="mb-3">
                   <label for="" class="form-label">Nombre</label>
                   <input type="text"
-                    class="form-control" name="" id="" aria-describedby="helpId" placeholder="Ingresa el nombre del curso">
+                    class="form-control" name="" id="nombre" aria-describedby="helpId" placeholder="Ingresa el nombre del curso">
                   <small id="helpId" class="form-text text-muted">Nombre aca</small>
                 </div>
 
                 <div class="mb-3">
                     <label for="" class="form-label">Descripcion</label>
                     <input type="text"
-                      class="form-control" name="" id="" aria-describedby="helpId" placeholder="Ingresa la descripcion del curso">
+                      class="form-control" name="" id="descripcion" aria-describedby="helpId" placeholder="Ingresa la descripcion del curso">
                     <small id="helpId" class="form-text text-muted">Descripcion aca</small>
                 </div>
 
                 <div class="mb-3">
                     <label for="" class="form-label">Tiempo</label>
                     <input type="text"
-                      class="form-control" name="" id="" aria-describedby="helpId" placeholder="Ingresa el tiempo del curso">
+                      class="form-control" name="" id="tiempo" aria-describedby="helpId" placeholder="Ingresa el tiempo del curso">
                     <small id="helpId" class="form-text text-muted">Tiempo aca</small>
                 </div>
                 <div class="mb-3">
@@ -133,7 +133,7 @@
             <td>${valor.tiempo}</td>
             <td>${valor.usuario}</td>
             <td> <button type="delete" class="btn btn-danger" onclick="eliminar()">Borrar</button> ||
-              <button type="modify" class="btn btn-primary" id="mostrarModal" onclick="editar()">Editar</button>
+              <button type="modify" class="btn btn-primary" id="mostrarModal" onclick="editar('${valor.id}','${valor.nombre}', '${valor.descripcion}', '${valor.tiempo}')">Editar</button>
             </td>
           </tr>`;
       }
@@ -143,6 +143,8 @@
       const myModal = new bootstrap.Modal(document.getElementById('modalId'));
       myModal.show();
       document.getElementById('nombre').value = nombre;
+      document.getElementById('descripcion').value = descripcion;
+      document.getElementById('tiempo').value = tiempo;
     }
     function eliminar(){
       alert('eliminar');
