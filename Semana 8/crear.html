@@ -52,6 +52,7 @@
         </main>
         <footer>
           <!-- place footer here -->
+          
         </footer>
     </div>
   <!-- Bootstrap JavaScript Libraries -->
@@ -78,10 +79,10 @@
             }
             console.log(datosenviar);
 
-        fetch("https://paginas-web-cr.com/ApiPHP/apis/InsertarCursos.php",{
-            method:'POST',
-            body:JSON.stringify(datosenviar)
-        })
+            fetch("https://paginas-web-cr.com/ApiPHP/apis/InsertarCursos.php",{
+                method:'POST',
+                body:JSON.stringify(datosenviar)
+            })
             .then((respuesta) => respuesta.json()) 
             .then((datosrespuesta) => {
             })
